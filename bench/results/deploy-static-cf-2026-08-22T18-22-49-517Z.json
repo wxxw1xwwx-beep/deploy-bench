@@ -1,0 +1,48 @@
+{
+  "unit": "EP02",
+  "condition": "next static export → Cloudflare Pages",
+  "environment": {
+    "node": "v26.4.0",
+    "bun": "1.3.14",
+    "wrangler": "4.123.0",
+    "next": "16.3.1",
+    "os": "macOS 26.5.2 (arm64)",
+    "started_at": "2026-08-22T18:22:49.517Z"
+  },
+  "builds": {
+    "cold": [
+      4044,
+      3853,
+      3812
+    ],
+    "warm": [
+      2615,
+      2621,
+      2628
+    ]
+  },
+  "deploy": {
+    "ms": 6642,
+    "url": "https://338922cb.deploy-bench-ep02.pages.dev",
+    "branch": "main"
+  },
+  "ttfb": {
+    "definition": "cold = first request after the deployment became reachable, to a URL nothing had requested before. NOT a purged edge cache: *.pages.dev is Cloudflare's own zone and offers no purge control from our side.",
+    "measured_url": "https://338922cb.deploy-bench-ep02.pages.dev",
+    "used_unique_url": true,
+    "cert_wait_ms": 844,
+    "cold_ms": 38,
+    "cold_http": 200,
+    "warm_ms": [
+      30,
+      41,
+      35,
+      33,
+      33
+    ],
+    "warm_min": 30,
+    "warm_median": 33,
+    "warm_max": 41
+  },
+  "config_restored": true
+}

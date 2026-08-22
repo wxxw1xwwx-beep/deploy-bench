@@ -1,0 +1,19 @@
+# deploy-static-cf 2026-08-22T18:22:49.517Z
+project=deploy-bench-ep02 runs=3 ttfb_samples=5
+next.config.ts を計測条件へ差し替え（output:"export"）
+cold build #1: ok 4044ms
+warm build #1: ok 2615ms
+cold build #2: ok 3853ms
+warm build #2: ok 2621ms
+cold build #3: ok 3812ms
+warm build #3: ok 2628ms
+deploy: ok 6642ms → https://338922cb.deploy-bench-ep02.pages.dev
+固有URLの証明書が出た（1秒・1回）→ https://338922cb.deploy-bench-ep02.pages.dev を測る
+TTFB cold: http=200 38ms
+TTFB warm #1: http=200 30ms
+TTFB warm #2: http=200 41ms
+TTFB warm #3: http=200 35ms
+TTFB warm #4: http=200 33ms
+TTFB warm #5: http=200 33ms
+next.config.ts を元へ戻した
+復元の確認: 一致
