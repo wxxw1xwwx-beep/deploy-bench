@@ -1,0 +1,185 @@
+===== run 1 / cold =====
+$ bunx --bun next build
+exit=0  elapsed=4343ms
+
+--- stdout ---
+▲ Next.js 16.3.1 (Turbopack)
+✓ Running next.config.ts took 520ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1855ms
+  Running TypeScript ...
+  Finished TypeScript in 730ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+  Generating static pages using 5 workers (2/4) 
+  Generating static pages using 5 workers (3/4) 
+✓ Generating static pages using 5 workers (4/4) in 161ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+
+--- stderr ---
+
+
+===== run 1 / warm =====
+$ bunx --bun next build
+exit=0  elapsed=1478ms
+
+--- stdout ---
+▲ Next.js 16.3.1 (Turbopack)
+✓ Running next.config.ts took 16ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 76ms
+  Running TypeScript ...
+  Finished TypeScript in 472ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+  Generating static pages using 5 workers (2/4) 
+  Generating static pages using 5 workers (3/4) 
+✓ Generating static pages using 5 workers (4/4) in 150ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+
+--- stderr ---
+
+
+===== run 2 / cold =====
+$ bunx --bun next build
+exit=0  elapsed=2981ms
+
+--- stdout ---
+▲ Next.js 16.3.1 (Turbopack)
+✓ Running next.config.ts took 16ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1288ms
+  Running TypeScript ...
+  Finished TypeScript in 596ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+  Generating static pages using 5 workers (2/4) 
+  Generating static pages using 5 workers (3/4) 
+✓ Generating static pages using 5 workers (4/4) in 157ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+
+--- stderr ---
+
+
+===== run 2 / warm =====
+$ bunx --bun next build
+exit=0  elapsed=1514ms
+
+--- stdout ---
+▲ Next.js 16.3.1 (Turbopack)
+✓ Running next.config.ts took 16ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 102ms
+  Running TypeScript ...
+  Finished TypeScript in 474ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+  Generating static pages using 5 workers (2/4) 
+  Generating static pages using 5 workers (3/4) 
+✓ Generating static pages using 5 workers (4/4) in 159ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+
+--- stderr ---
+
+
+===== run 3 / cold =====
+$ bunx --bun next build
+exit=0  elapsed=2687ms
+
+--- stdout ---
+▲ Next.js 16.3.1 (Turbopack)
+✓ Running next.config.ts took 16ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1191ms
+  Running TypeScript ...
+  Finished TypeScript in 533ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+  Generating static pages using 5 workers (2/4) 
+  Generating static pages using 5 workers (3/4) 
+✓ Generating static pages using 5 workers (4/4) in 167ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+
+--- stderr ---
+
+
+===== run 3 / warm =====
+$ bunx --bun next build
+exit=0  elapsed=1525ms
+
+--- stdout ---
+▲ Next.js 16.3.1 (Turbopack)
+✓ Running next.config.ts took 16ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 96ms
+  Running TypeScript ...
+  Finished TypeScript in 470ms ...
+  Collecting page data using 5 workers ...
+  Generating static pages using 5 workers (0/4) ...
+  Generating static pages using 5 workers (1/4) 
+  Generating static pages using 5 workers (2/4) 
+  Generating static pages using 5 workers (3/4) 
+✓ Generating static pages using 5 workers (4/4) in 157ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+└ ○ /_not-found
+
+
+○  (Static)  prerendered as static content
+
+
+--- stderr ---
+

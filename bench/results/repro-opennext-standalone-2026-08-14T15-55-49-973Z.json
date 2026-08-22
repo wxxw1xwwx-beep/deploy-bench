@@ -1,0 +1,54 @@
+{
+  "env": {
+    "startedAt": "2026-08-14T15:55:49.973Z",
+    "next": "16.3.1",
+    "openNextCloudflare": "1.20.2",
+    "wrangler": "4.123.0",
+    "node": "v26.4.0",
+    "bun": "1.3.14",
+    "os": "26.5.2"
+  },
+  "verdict": "CONFIRMED: 原因はランタイム。Bun下ではアダプタが立てた NEXT_PRIVATE_STANDALONE が子プロセスへ伝わらず standalone が作られない。Node で走らせれば設定変更なしで通る。Bun を使いたい場合は output:\"standalone\" を自分で書くのが回避策",
+  "errorLine": "ENOENT: no such file or directory, open '/Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app/.next/standalone/.next/server/pages-manifest.json'",
+  "cases": [
+    {
+      "label": "A: bun runtime / output unset",
+      "runtime": "bun",
+      "outputInConfig": "(unset)",
+      "command": "bunx --bun opennextjs-cloudflare build",
+      "exitCode": 1,
+      "ok": false,
+      "ms": 3851,
+      "standaloneEmitted": false,
+      "workerEmitted": false,
+      "stdout": "\n┌─────────────────────────────┐\n│ OpenNext — Cloudflare build │\n└─────────────────────────────┘\n\nApp directory: /Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app\nNext.js version : 16.3.1\n@opennextjs/cloudflare version: 1.20.2\n@opennextjs/aws version: 4.1.0\nworkerd compatibility_date: 2026-08-14\n\n┌─────────────────────────────────┐\n│ OpenNext — Building Next.js app │\n└─────────────────────────────────┘\n\n▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 16ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 1215ms\n  Running TypeScript ...\n  Finished TypeScript in 1025ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 155ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n\n┌──────────────────────────────┐\n│ OpenNext — Generating bundle │\n└──────────────────────────────┘\n\nBundling middleware function...\nBundling static assets...\nBundling cache assets...\n",
+      "stderr": "$ next build\n188 |     //   '404.html',\n189 |     //   'csr.html',\n190 |     //   'image-html-tag.html',\n191 |     // ])\n192 |     const manifestPath = path.join(dotNextPath, \".next/server/pages-manifest.json\");\n193 |     const manifest = fs.readFileSync(manifestPath, \"utf-8\");\n                              ^\nENOENT: no such file or directory, open '/Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app/.next/standalone/.next/server/pages-manifest.json'\n    path: \"/Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app/.next/standalone/.next/server/pages-manifest.json\",\n syscall: \"open\",\n   errno: -2,\n    code: \"ENOENT\"\n\n      at getHtmlPages (/Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app/node_modules/@opennextjs/aws/dist/build/helper.js:193:25)\n      at createCacheAssets (/Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app/node_modules/@opennextjs/aws/dist/build/createAssets.js:77:35)\n      at build (/Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app/node_modules/@opennextjs/cloudflare/dist/cli/build/build.js:82:44)\n      at async buildCommand (/Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app/node_modules/@opennextjs/cloudflare/dist/cli/commands/build.js:40:11)\n\nBun v1.3.14 (macOS arm64)\n"
+    },
+    {
+      "label": "B: bun runtime / output standalone",
+      "runtime": "bun",
+      "outputInConfig": "standalone",
+      "command": "bunx --bun opennextjs-cloudflare build",
+      "exitCode": 0,
+      "ok": true,
+      "ms": 6815,
+      "standaloneEmitted": true,
+      "workerEmitted": true,
+      "stdout": "\n┌─────────────────────────────┐\n│ OpenNext — Cloudflare build │\n└─────────────────────────────┘\n\nApp directory: /Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app\nNext.js version : 16.3.1\n@opennextjs/cloudflare version: 1.20.2\n@opennextjs/aws version: 4.1.0\nworkerd compatibility_date: 2026-08-14\n\n┌─────────────────────────────────┐\n│ OpenNext — Building Next.js app │\n└─────────────────────────────────┘\n\n▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 15ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 1415ms\n  Running TypeScript ...\n  Finished TypeScript in 919ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 157ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n\n┌──────────────────────────────┐\n│ OpenNext — Generating bundle │\n└──────────────────────────────┘\n\nBundling middleware function...\nBundling static assets...\nBundling cache assets...\nBuilding server function: default...\n# copyPackageTemplateFiles\n\u001b[35m⚙️ Bundling the OpenNext server...\n\u001b[0m\n\u001b[35mWorker saved in `.open-next/worker.js` 🚀\n\u001b[0m\nOpenNext build complete.\n",
+      "stderr": "$ next build\n[1119.25ms] Applying code patches\n"
+    },
+    {
+      "label": "C: node runtime / output unset",
+      "runtime": "node",
+      "outputInConfig": "(unset)",
+      "command": "npx --no-install opennextjs-cloudflare build",
+      "exitCode": 0,
+      "ok": true,
+      "ms": 7074,
+      "standaloneEmitted": true,
+      "workerEmitted": true,
+      "stdout": "\n┌─────────────────────────────┐\n│ OpenNext — Cloudflare build │\n└─────────────────────────────┘\n\nApp directory: /Users/kudotaiga/Desktop/your-perfect-days/affiliate-business-os/06_automation/bench/reference-app\nNext.js version : 16.3.1\n@opennextjs/cloudflare version: 1.20.2\n@opennextjs/aws version: 4.1.0\nworkerd compatibility_date: 2026-08-14\n\n┌─────────────────────────────────┐\n│ OpenNext — Building Next.js app │\n└─────────────────────────────────┘\n\n▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 10ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 1454ms\n  Running TypeScript ...\n  Finished TypeScript in 845ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 165ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n\n┌──────────────────────────────┐\n│ OpenNext — Generating bundle │\n└──────────────────────────────┘\n\nBundling middleware function...\nBundling static assets...\nBundling cache assets...\nBuilding server function: default...\nApplying code patches: 1.161s\n# copyPackageTemplateFiles\n\u001b[35m⚙️ Bundling the OpenNext server...\n\u001b[0m\n\u001b[35mWorker saved in `.open-next/worker.js` 🚀\n\u001b[0m\nOpenNext build complete.\n",
+      "stderr": "$ next build\n"
+    }
+  ]
+}

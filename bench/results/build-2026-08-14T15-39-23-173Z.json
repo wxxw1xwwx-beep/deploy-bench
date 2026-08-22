@@ -1,0 +1,95 @@
+{
+  "env": {
+    "startedAt": "2026-08-14T15:39:23.173Z",
+    "os": "26.5.2",
+    "arch": "arm64",
+    "cpu": "Apple M5 Pro",
+    "memBytes": "25769803776",
+    "node": "v26.4.0",
+    "bun": "1.3.14",
+    "nextVersion": "16.3.1"
+  },
+  "summary": {
+    "cold": {
+      "n": 3,
+      "min": 2687,
+      "median": 2981,
+      "max": 4343
+    },
+    "warm": {
+      "n": 3,
+      "min": 1478,
+      "median": 1514,
+      "max": 1525
+    },
+    "failures": []
+  },
+  "runs": [
+    {
+      "run": 1,
+      "cold": {
+        "label": "cold",
+        "command": "bunx --bun next build",
+        "ok": true,
+        "exitCode": 0,
+        "ms": 4343,
+        "stdout": "▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 520ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 1855ms\n  Running TypeScript ...\n  Finished TypeScript in 730ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 161ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n",
+        "stderr": ""
+      },
+      "warm": {
+        "label": "warm",
+        "command": "bunx --bun next build",
+        "ok": true,
+        "exitCode": 0,
+        "ms": 1478,
+        "stdout": "▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 16ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 76ms\n  Running TypeScript ...\n  Finished TypeScript in 472ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 150ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n",
+        "stderr": ""
+      },
+      "outBytes": 861724
+    },
+    {
+      "run": 2,
+      "cold": {
+        "label": "cold",
+        "command": "bunx --bun next build",
+        "ok": true,
+        "exitCode": 0,
+        "ms": 2981,
+        "stdout": "▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 16ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 1288ms\n  Running TypeScript ...\n  Finished TypeScript in 596ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 157ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n",
+        "stderr": ""
+      },
+      "warm": {
+        "label": "warm",
+        "command": "bunx --bun next build",
+        "ok": true,
+        "exitCode": 0,
+        "ms": 1514,
+        "stdout": "▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 16ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 102ms\n  Running TypeScript ...\n  Finished TypeScript in 474ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 159ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n",
+        "stderr": ""
+      },
+      "outBytes": 861724
+    },
+    {
+      "run": 3,
+      "cold": {
+        "label": "cold",
+        "command": "bunx --bun next build",
+        "ok": true,
+        "exitCode": 0,
+        "ms": 2687,
+        "stdout": "▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 16ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 1191ms\n  Running TypeScript ...\n  Finished TypeScript in 533ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 167ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n",
+        "stderr": ""
+      },
+      "warm": {
+        "label": "warm",
+        "command": "bunx --bun next build",
+        "ok": true,
+        "exitCode": 0,
+        "ms": 1525,
+        "stdout": "▲ Next.js 16.3.1 (Turbopack)\n✓ Running next.config.ts took 16ms\n\n  Creating an optimized production build ...\n✓ Compiled successfully in 96ms\n  Running TypeScript ...\n  Finished TypeScript in 470ms ...\n  Collecting page data using 5 workers ...\n  Generating static pages using 5 workers (0/4) ...\n  Generating static pages using 5 workers (1/4) \r\n  Generating static pages using 5 workers (2/4) \r\n  Generating static pages using 5 workers (3/4) \r\n✓ Generating static pages using 5 workers (4/4) in 157ms\n  Finalizing page optimization ...\n\nRoute (app)\n┌ ○ /\n└ ○ /_not-found\n\n\n○  (Static)  prerendered as static content\n\n",
+        "stderr": ""
+      },
+      "outBytes": 861724
+    }
+  ]
+}

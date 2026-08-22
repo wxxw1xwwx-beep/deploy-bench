@@ -1,0 +1,59 @@
+From b00a873ae6df4dec345f3c43f2853d7d97cca5ea Mon Sep 17 00:00:00 2001
+From: Taiga Kudo <wxxw1xwwx@gmail.com>
+Date: Sat, 15 Aug 2026 01:11:11 +0900
+Subject: [PATCH] fix(aws): pass process.env explicitly when spawning the
+ Next.js build
+
+setStandaloneBuildMode mutates process.env immediately before buildNextjsApp
+spawns the Next.js build. Node forwards those mutations to the child by
+default, but Bun resolves the child environment from a startup snapshot unless
+env is passed explicitly, so NEXT_PRIVATE_STANDALONE never reaches the build
+and standalone output is never produced.
+
+The failure only surfaces later in createCacheAssets as ENOENT on
+.next/standalone/.next/server/pages-manifest.json, far from the actual cause.
+---
+ .changeset/pass-env-to-next-build.md         | 15 +++++++++++++++
+ packages/open-next/src/build/buildNextApp.ts |  5 +++++
+ 2 files changed, 20 insertions(+)
+ create mode 100644 .changeset/pass-env-to-next-build.md
+
+diff --git a/.changeset/pass-env-to-next-build.md b/.changeset/pass-env-to-next-build.md
+new file mode 100644
+index 0000000..df68655
+--- /dev/null
++++ b/.changeset/pass-env-to-next-build.md
+@@ -0,0 +1,15 @@
++---
++"@opennextjs/aws": patch
++---
++
++Pass `process.env` explicitly when spawning the Next.js build
++
++`setStandaloneBuildMode` communicates with the Next.js build by mutating
++`process.env` (`NEXT_PRIVATE_STANDALONE`, `NEXT_PRIVATE_OUTPUT_TRACE_ROOT`)
++immediately before `buildNextjsApp` spawns it. Node forwards those mutations to
++the child process by default, but Bun builds the child environment from a
++snapshot taken at startup unless `env` is passed explicitly, so the build never
++enters standalone mode. The failure surfaces much later in `createCacheAssets`
++as `ENOENT ... .next/standalone/.next/server/pages-manifest.json`, which gives
++no hint of the real cause. Passing `env: process.env` makes both runtimes
++behave the same.
+diff --git a/packages/open-next/src/build/buildNextApp.ts b/packages/open-next/src/build/buildNextApp.ts
+index 453086c..1cd0690 100644
+--- a/packages/open-next/src/build/buildNextApp.ts
++++ b/packages/open-next/src/build/buildNextApp.ts
+@@ -20,5 +20,10 @@ export function buildNextjsApp(options: buildHelper.BuildOptions) {
+   cp.execSync(command, {
+     stdio: "inherit",
+     cwd: path.dirname(options.appPackageJsonPath),
++    // `setStandaloneBuildMode` mutates `process.env` right before this call.
++    // Node forwards those mutations to the child by default, but Bun resolves
++    // the child environment from a snapshot taken at startup unless `env` is
++    // passed explicitly, so `NEXT_PRIVATE_STANDALONE` never reaches the build.
++    env: process.env,
+   });
+ }
+-- 
+2.50.1 (Apple Git-155)
+
